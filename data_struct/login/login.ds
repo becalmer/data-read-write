@@ -1,0 +1,60 @@
+//nihao
+/*
+lllll
+*/
+
+include type_1
+include kmap
+include bmap
+include kvmap
+include vmap
+include svector
+include stset
+include tset
+
+message
+{
+    login = 1; //Login
+    chat = 2;
+};
+
+struct user_login_info_t
+{
+    0 user_t     user;
+    1 password_t password;
+};
+
+struct loginp
+{
+    0 uint32_t    lu;
+    1 uint32_t    lm;
+    3 user_login_info_t user_login_info;
+};
+
+struct chat
+{
+    0 uint32_t    lu;
+    1 uint32_t    lm;
+    3 user_login_info_t user_login_info;
+};
+
+struct entry
+{
+    0 uint32_t m;
+    1 uint32_t n;
+    2 uint32_t c;
+    5 user_login_info_t user_login_info;
+    6 kmap_t<user_t> user_map;
+    8 bmap_t         id_map;
+    10 kvmap_t<user_t,password_t> user_password_map;
+    12 vmap_t<password_t> password_map;
+    14 svector_t<user_t,32> user_vec;
+    16 stset_t       user_id_set;
+    18 tset_t<user_t>       user_set;
+};
+
+enum state
+{
+    scene = 1;
+    login = 2;
+};
