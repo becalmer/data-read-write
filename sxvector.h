@@ -93,7 +93,7 @@ namespace ds
 
             for(size_t x = 0; x < m_count; ++ x)
             {
-                if(!m_data[x].write(v))
+                if(!v.write(m_data[x]))
                 {
                     return false;
                 }
@@ -114,7 +114,7 @@ namespace ds
 
             for(size_t x = 0; x < l; ++ x)
             {
-                if(!m_data[x].read(v))
+                if(!v.read(m_data[x]))
                 {
                     return false;
                 }
